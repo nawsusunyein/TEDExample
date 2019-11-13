@@ -26,7 +26,6 @@ public class GamesFragment extends Fragment {
 
     RecyclerView recyclerGameView;
     GameAdapter gameAdapter;
-    List<UsersModel> userList;
     GameResultModel gamesList;
     View gameView;
 
@@ -37,19 +36,6 @@ public class GamesFragment extends Fragment {
         gameView = inflater.inflate(R.layout.fragment_games, container, false);
         APIService service = RetrofitClient.getRetrofitInstance().create(APIService.class);
         Call<GameResultModel> callGameList = service.getAllGames();
-
-        /*call.enqueue(new Callback<List<UsersModel>>() {
-            @Override
-            public void onResponse(Call<List<UsersModel>> call, Response<List<UsersModel>> response) {
-                loadUserList(response.body());
-            }
-
-            @Override
-            public void onFailure(Call<List<UsersModel>> call, Throwable t) {
-               // Toast.makeText(MainActivity.this,"Unable to load user",Toast.LENGTH_LONG).show();
-            }
-        });*/
-
 
         callGameList.enqueue(new Callback<GameResultModel>() {
             @Override
@@ -63,16 +49,6 @@ public class GamesFragment extends Fragment {
             }
         });
         return gameView;
-    }
-
-
-    private void loadUserList(List<UsersModel> usersList){
-        /*userList = usersList;
-        recyclerGameView = (RecyclerView) gameView.findViewById(R.id.recyclerGameView);
-        gameAdapter = new GameAdapter(userList,getContext());
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        recyclerGameView.setLayoutManager(layoutManager);
-        recyclerGameView.setAdapter(gameAdapter);*/
     }
 
     private void setGameList(GameResultModel gameList){

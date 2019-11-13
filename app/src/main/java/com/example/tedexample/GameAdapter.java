@@ -1,6 +1,7 @@
 package com.example.tedexample;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class GameAdapter extends RecyclerView.Adapter<GameDataViewHolder>{
 
-    private List<UsersModel> userList;
     private GameResultModel gameList;
     Context context;
 
@@ -38,6 +38,13 @@ public class GameAdapter extends RecyclerView.Adapter<GameDataViewHolder>{
     public void onBindViewHolder(@NonNull GameDataViewHolder holder, int position) {
         GameListModel gameInfo = gameList.getGameResult().get(position);
         holder.bindGameListData(gameInfo,context);
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int pos) {
+                Intent gameDetailsIntent = new Intent(context,GameDetailsActivity.class);
+                context.startActivity(gameDetailsIntent);
+            }
+        });
 
     }
 

@@ -18,12 +18,13 @@ import java.net.URL;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class GameDataViewHolder extends RecyclerView.ViewHolder {
+public class GameDataViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     ImageView imageViewGameProfile;
     TextView txtGameName;
     TextView txtReleasedDate;
     TextView txtRating;
+    private ItemClickListener itemClickListener;
 
     GameDataViewHolder(View itemView){
         super(itemView);
@@ -31,6 +32,7 @@ public class GameDataViewHolder extends RecyclerView.ViewHolder {
         txtGameName = (TextView) itemView.findViewById(R.id.txtGameName);
         txtRating = (TextView) itemView.findViewById(R.id.txtRating);
         txtReleasedDate = (TextView) itemView.findViewById(R.id.txtReleaseDate);
+        itemView.setOnClickListener(this);
     }
 
     public void bindGameListData(GameListModel gameInfo, Context context){
@@ -42,4 +44,12 @@ public class GameDataViewHolder extends RecyclerView.ViewHolder {
     }
 
 
+    @Override
+    public void onClick(View v) {
+        this.itemClickListener.onItemClick(v,getLayoutPosition());
+    }
+
+    public void setItemClickListener(ItemClickListener ic){
+        this.itemClickListener = ic;
+    }
 }

@@ -7,9 +7,6 @@ import retrofit2.http.GET;
 
 public interface APIService {
 
-    @GET("/users")
-    Call<List<UsersModel>> getAllUsers();
-
     @GET("/games")
     Call<GameResultModel> getAllGames();
 }
