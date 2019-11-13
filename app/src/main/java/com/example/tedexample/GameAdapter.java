@@ -36,12 +36,13 @@ public class GameAdapter extends RecyclerView.Adapter<GameDataViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull GameDataViewHolder holder, int position) {
-        GameListModel gameInfo = gameList.getGameResult().get(position);
+        final GameListModel gameInfo = gameList.getGameResult().get(position);
         holder.bindGameListData(gameInfo,context);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View view, int pos) {
                 Intent gameDetailsIntent = new Intent(context,GameDetailsActivity.class);
+                gameDetailsIntent.putExtra("game_name",gameInfo.getGameName());
                 context.startActivity(gameDetailsIntent);
             }
         });
