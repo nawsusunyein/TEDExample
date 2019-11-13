@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 import androidx.annotation.NonNull;
@@ -34,9 +36,9 @@ public class GameAdapter extends RecyclerView.Adapter<GameDataViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull GameDataViewHolder holder, int position) {
-        holder.txtGameName.setText(gameList.getGameResult().get(position).getGameName());
-        holder.txtRating.setText(gameList.getGameResult().get(position).getGameRating());
-        holder.txtReleasedDate.setText(gameList.getGameResult().get(position).getGameReleasedDate());
+        GameListModel gameInfo = gameList.getGameResult().get(position);
+        holder.bindGameListData(gameInfo,context);
+
     }
 
     @Override

@@ -7,7 +7,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
-
+        <ImageView
+            android:id="@+id/imgGameProfile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -19,17 +25,11 @@
                 android:orientation="horizontal"
                 >
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name:"
-                    android:padding="8dp"
-                    />
-                <TextView
                     android:id="@+id/txtGameName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Wo Ye Bu Zhi Dao"
-                    android:layout_marginLeft="8dp"
+                    android:textSize="20sp"
                     android:padding="8dp"
                     />
             </LinearLayout>
@@ -38,18 +38,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Rating:"
-                    android:padding="8dp"
-                    />
+
                 <TextView
                     android:id="@+id/txtRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="4.7"
-                    android:layout_marginLeft="8dp"
+                    android:text="4.7 Rating"
+                    android:textSize="15sp"
                     android:padding="8dp"
                     />
             </LinearLayout>
@@ -62,6 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Release Date:"
+                    android:textSize="15sp"
                     android:padding="8dp"
                     />
                 <TextView
@@ -69,7 +65,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="28.03.2018"
-                    android:layout_marginLeft="8dp"
                     android:padding="8dp"
                     />
             </LinearLayout>
