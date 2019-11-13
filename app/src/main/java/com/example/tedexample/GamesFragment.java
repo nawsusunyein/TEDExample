@@ -13,10 +13,10 @@ import android.view.ViewGroup;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class VideosFragments extends Fragment {
+public class GamesFragment extends Fragment {
 
 
-    public VideosFragments() {
+    public GamesFragment() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class VideosFragments extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_videos_fragments, container, false);
+        return inflater.inflate(R.layout.fragment_games, container, false);
     }
 
 }

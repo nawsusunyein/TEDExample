@@ -15,8 +15,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tl_tablayout);
-        TabItem tabVideos = (TabItem) findViewById(R.id.tabVideo);
-        TabItem tabInfo = (TabItem) findViewById(R.id.tabAboutSpeaker);
+        TabItem tabVideos = (TabItem) findViewById(R.id.tabGames);
+        TabItem tabInfo = (TabItem) findViewById(R.id.tabDevelopers);
         final ViewPager viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager(),tabLayout.getTabCount());

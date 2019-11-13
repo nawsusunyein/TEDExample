@@ -12,15 +12,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabVideo"
+            android:id="@+id/tabGames"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Videos"/>
+            android:text="Games"/>
         <com.google.android.material.tabs.TabItem
-            android:id="@+id/tabAboutSpeaker"
+            android:id="@+id/tabDevelopers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Info"
+            android:text="Developers"
             />
     </com.google.android.material.tabs.TabLayout>
 
