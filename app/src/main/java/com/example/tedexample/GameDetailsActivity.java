@@ -4,9 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.media.Image;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.VideoView;
+
 import androidx.appcompat.widget.Toolbar;
 
 import com.bumptech.glide.Glide;
@@ -21,31 +28,58 @@ public class GameDetailsActivity extends AppCompatActivity {
     TextView txtGameReleasedDate;
     CollapsingToolbarLayout collapseToolLayout;
     ImageView imgGameProfile;
+    VideoView vdoGameVideoView;
+    ProgressBar progressBar;
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_details);
        // getActionBar().hide();
-        //txtGameName = (TextView) findViewById(R.id.txtGameN);
-        //txtGameRating = (TextView) findViewById(R.id.txtGameR);
-        //txtGameReleasedDate = (TextView) findViewById(R.id.txtGameRes);
-        imgGameProfile = (ImageView) findViewById(R.id.imgGameImage);
+        txtGameName = (TextView) findViewById(R.id.textGameN);
+        txtGameRating = (TextView) findViewById(R.id.textGameR);
+        txtGameReleasedDate = (TextView) findViewById(R.id.textGameReleaseDate);
         collapseToolLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbarGameTitle);
+        vdoGameVideoView = (VideoView) findViewById(R.id.vdoGameVideo);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
 
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         Intent detailIntent = getIntent();
         String name = detailIntent.getExtras().getString("game_name");
         String rating = detailIntent.getExtras().getString("game_rating");
         String releaseDate = detailIntent.getExtras().getString("game_date");
         String imgURLString = detailIntent.getExtras().getString("game_bgImage");
+        String clipString = detailIntent.getExtras().getString("game_clip");
 
         //txtGameName.setText(name);
        // txtGameRating.setText(rating);
        // txtGameReleasedDate.setText(releaseDate);
         collapseToolLayout.setTitle(name);
-        Glide.with(getApplicationContext()).load(imgURLString).into(imgGameProfile);
+        Uri video = Uri.parse(clipString);
+        vdoGameVideoView.setVideoURI(video);
+        vdoGameVideoView.start();
+        progressBar.setVisibility(View.VISIBLE);
+        vdoGameVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+                mp.start();
+                mp.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mp, int width, int height) {
+                        mp.start();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+
+            }
+        });
+        ratingBar.setRating(Float.parseFloat(rating));
+        txtGameName.setText(name);
+        txtGameRating.setText(rating);
+        txtGameReleasedDate.setText(releaseDate);
+        //Glide.with(getApplicationContext()).load(imgURLString).into(imgGameProfile);
 
     }
 }
