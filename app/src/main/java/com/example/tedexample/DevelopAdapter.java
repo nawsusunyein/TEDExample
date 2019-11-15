@@ -1,6 +1,7 @@
 package com.example.tedexample;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,13 @@ public class DevelopAdapter extends RecyclerView.Adapter<DeveloperDataViewHolder
     public void onBindViewHolder(@NonNull DeveloperDataViewHolder holder, int position) {
         DevListModel devInfo = devResult.getDevResults().get(position);
         holder.bindDeveloperInfo(devInfo,context);
+        holder.setItemClickListener(new ItemClickListener() {
+            @Override
+            public void onItemClick(View view, int pos) {
+                Intent devIntent = new Intent(context,DeveloperDetails.class);
+                context.startActivity(devIntent);
+            }
+        });
     }
 
     @Override
