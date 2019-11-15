@@ -33,12 +33,16 @@ public class DevelopAdapter extends RecyclerView.Adapter<DeveloperDataViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DeveloperDataViewHolder holder, int position) {
-        DevListModel devInfo = devResult.getDevResults().get(position);
+        final DevListModel devInfo = devResult.getDevResults().get(position);
+        final int gameCount = devInfo.getGamesList().size();
         holder.bindDeveloperInfo(devInfo,context);
         holder.setItemClickListener(new ItemClickListener() {
             @Override
             public void onItemClick(View view, int pos) {
                 Intent devIntent = new Intent(context,DeveloperDetails.class);
+                devIntent.putExtra("dev_name",devInfo.getDevName());
+                devIntent.putExtra("dev_image",devInfo.getDevImage());
+                devIntent.putExtra("dev_game_count",gameCount);
                 context.startActivity(devIntent);
             }
         });
