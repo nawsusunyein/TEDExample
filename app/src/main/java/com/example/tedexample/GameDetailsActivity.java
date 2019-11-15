@@ -36,7 +36,7 @@ public class GameDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_details);
-       // getActionBar().hide();
+
         txtGameName = (TextView) findViewById(R.id.textGameN);
         txtGameRating = (TextView) findViewById(R.id.textGameR);
         txtGameReleasedDate = (TextView) findViewById(R.id.textGameReleaseDate);
@@ -52,9 +52,6 @@ public class GameDetailsActivity extends AppCompatActivity {
         String imgURLString = detailIntent.getExtras().getString("game_bgImage");
         String clipString = detailIntent.getExtras().getString("game_clip");
 
-        //txtGameName.setText(name);
-       // txtGameRating.setText(rating);
-       // txtGameReleasedDate.setText(releaseDate);
         collapseToolLayout.setTitle(name);
         Uri video = Uri.parse(clipString);
         vdoGameVideoView.setVideoURI(video);
@@ -79,7 +76,6 @@ public class GameDetailsActivity extends AppCompatActivity {
         txtGameName.setText(name);
         txtGameRating.setText(rating);
         txtGameReleasedDate.setText(releaseDate);
-        //Glide.with(getApplicationContext()).load(imgURLString).into(imgGameProfile);
 
     }
 }

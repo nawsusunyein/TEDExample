@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -22,25 +23,21 @@ public class GameDataViewHolder extends RecyclerView.ViewHolder implements View.
 
     ImageView imageViewGameProfile;
     TextView txtGameName;
-    TextView txtReleasedDate;
-    TextView txtRating;
+    RatingBar rdGameRatingBar;
     private ItemClickListener itemClickListener;
 
     GameDataViewHolder(View itemView){
         super(itemView);
         imageViewGameProfile = (ImageView) itemView.findViewById(R.id.imgGameProfile);
         txtGameName = (TextView) itemView.findViewById(R.id.txtGameName);
-        txtRating = (TextView) itemView.findViewById(R.id.txtRating);
-        txtReleasedDate = (TextView) itemView.findViewById(R.id.txtReleaseDate);
+        rdGameRatingBar = (RatingBar) itemView.findViewById(R.id.rdGameRatingBar);
         itemView.setOnClickListener(this);
     }
 
     public void bindGameListData(GameListModel gameInfo, Context context){
-        String ratingValue = gameInfo.getGameRating().toString() + " Rating";
         Glide.with(context).load(gameInfo.getGameBackgroundImage()).into(imageViewGameProfile);
         txtGameName.setText(gameInfo.getGameName());
-        txtRating.setText(ratingValue);
-        txtReleasedDate.setText(gameInfo.getGameReleasedDate());
+        rdGameRatingBar.setRating(Float.parseFloat(gameInfo.getGameRating()));
     }
 
 

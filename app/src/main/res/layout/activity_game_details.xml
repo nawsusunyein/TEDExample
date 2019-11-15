@@ -90,6 +90,7 @@
                     android:layout_height="wrap_content"
                     style="?android:attr/ratingBarStyleSmall"
                     android:isIndicator="true"
+                    android:progressTint="@color/colorPrimary"
                     />
                 <TextView
                     android:id="@+id/textGameR"
