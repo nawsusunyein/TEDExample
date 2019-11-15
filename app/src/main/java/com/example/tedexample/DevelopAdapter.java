@@ -32,8 +32,8 @@ public class DevelopAdapter extends RecyclerView.Adapter<DeveloperDataViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull DeveloperDataViewHolder holder, int position) {
-        holder.txtDevName.setText(devResult.getDevResults().get(position).getDevName());
-        Glide.with(context).load(devResult.getDevResults().get(position).getDevImage()).into(holder.imgDeveloper);
+        DevListModel devInfo = devResult.getDevResults().get(position);
+        holder.bindDeveloperInfo(devInfo,context);
     }
 
     @Override
