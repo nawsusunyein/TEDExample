@@ -40,7 +40,7 @@ public class GamesFragment extends Fragment {
         gameView = inflater.inflate(R.layout.fragment_games, container, false);
         pgrGameList = (ProgressBar) gameView.findViewById(R.id.pgrGameList);
         pgrGameList.setVisibility(View.VISIBLE);
-        APIService service = RetrofitClient.getRetrofitInstance().create(APIService.class);
+        APIService service = RetrofitClient.getRetrofitInstance("https://rawg-video-games-database.p.rapidapi.com","rawg-video-games-database.p.rapidapi.com","3dc2a36d24mshdb45101497dc102p10bc92jsn5591140bc56d").create(APIService.class);
         Call<GameResultModel> callGameList = service.getAllGames();
 
         callGameList.enqueue(new Callback<GameResultModel>() {

@@ -15,10 +15,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitClient {
     private static Retrofit retrofit;
     private static final String BASE_URL = "https://rawg-video-games-database.p.rapidapi.com";
-    public static Retrofit getRetrofitInstance(){
+    public static Retrofit getRetrofitInstance(String baseUrl, final String apiHost, final String apiKey){
         if(retrofit == null){
             retrofit = new retrofit2.Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(baseUrl)
                     .addConverterFactory(GsonConverterFactory.create())
                     .client(new OkHttpClient().newBuilder()
                             .addInterceptor(new Interceptor() {
@@ -31,8 +31,8 @@ public class RetrofitClient {
                                             .build();
 
                                     Request newRequest = original.newBuilder()
-                                            .header("X-RapidAPI-Host", "rawg-video-games-database.p.rapidapi.com")
-                                            .header("X-RapidAPI-Key", "3dc2a36d24mshdb45101497dc102p10bc92jsn5591140bc56d")
+                                            .header("X-RapidAPI-Host",apiHost )
+                                            .header("X-RapidAPI-Key",apiKey)
                                             .url(newUrl)
                                             .method(original.method(), original.body())
                                             .build();

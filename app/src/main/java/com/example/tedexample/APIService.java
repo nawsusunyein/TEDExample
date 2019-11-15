@@ -9,4 +9,7 @@ public interface APIService {
 
     @GET("/games")
     Call<GameResultModel> getAllGames();
+
+    @GET("/developers")
+    Call<DevResultModel> getAllDevs();
 }
