@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class GamesFragment extends Fragment {
     GameResultModel gamesList;
     View gameView;
     ProgressBar pgrGameList;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
