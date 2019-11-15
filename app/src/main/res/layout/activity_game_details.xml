@@ -43,6 +43,7 @@
                 android:background="?attr/colorPrimary"
                 app:layout_collapseMode="pin"
                 app:titleTextColor="@android:color/white"
+
                 />
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>

@@ -31,11 +31,14 @@ public class GameDetailsActivity extends AppCompatActivity {
     VideoView vdoGameVideoView;
     ProgressBar progressBar;
     RatingBar ratingBar;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_details);
+
+
 
         txtGameName = (TextView) findViewById(R.id.textGameN);
         txtGameRating = (TextView) findViewById(R.id.textGameR);
@@ -44,6 +47,18 @@ public class GameDetailsActivity extends AppCompatActivity {
         vdoGameVideoView = (VideoView) findViewById(R.id.vdoGameVideo);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                //Define Back Button Function
+            }
+        });
 
         Intent detailIntent = getIntent();
         String name = detailIntent.getExtras().getString("game_name");

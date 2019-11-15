@@ -13,6 +13,7 @@ import retrofit2.Response;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,12 +29,15 @@ public class GamesFragment extends Fragment {
     GameAdapter gameAdapter;
     GameResultModel gamesList;
     View gameView;
+    ProgressBar pgrGameList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         gameView = inflater.inflate(R.layout.fragment_games, container, false);
+        pgrGameList = (ProgressBar) gameView.findViewById(R.id.pgrGameList);
+        pgrGameList.setVisibility(View.VISIBLE);
         APIService service = RetrofitClient.getRetrofitInstance().create(APIService.class);
         Call<GameResultModel> callGameList = service.getAllGames();
 
@@ -58,6 +62,7 @@ public class GamesFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerGameView.setLayoutManager(layoutManager);
         recyclerGameView.setAdapter(gameAdapter);
+        pgrGameList.setVisibility(View.GONE);
     }
 
 }
